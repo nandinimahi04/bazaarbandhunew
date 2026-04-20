@@ -14,8 +14,8 @@ services:
         generateValue: true
       - key: REDIS_URL
         fromService:
+          type: keyvalue
           name: bazaarbandhu-redis
-          type: redis
           property: connectionString
       - key: PORT
         value: 10000
@@ -40,8 +40,7 @@ services:
       - key: TWILIO_PHONE_NUMBER
         sync: false
 
-databases:
-  - name: bazaarbandhu-redis
-    type: redis
+  - type: keyvalue
+    name: bazaarbandhu-redis
     plan: free
     ipAllowList: [] # Only allow internal connections
